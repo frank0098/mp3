@@ -35,7 +35,7 @@ app.controller('MovieListCtrl', ['$scope', '$http',
       $scope.movies = data;
       
 
-      var genres = [];
+      var genres = ["ALL"];
       var index;
       var genreidx;
       var genrecount=0;
@@ -74,6 +74,14 @@ app.filter('genrefilter',function(){
     {
         var out=[];
         var idx;
+        if(active_genre==="ALL")
+        {
+          for(idx=0;idx<movies.length;idx++)
+          {
+            out.push(movies[idx]);
+          }
+          return out;
+        }
         for(idx=0;idx<movies.length;idx++)
         {
           var movie_genre = movies[idx].genre;
@@ -103,20 +111,20 @@ app.controller('MovieDetailCtrl', ['$scope', '$routeParams','$http',
 
     $http.get('./data/imdb250.json').success(function(data){
       var rank = $routeParams.rank;
-      $scope.rank = $routeParams.rank;
+      $scope.rank = data[rank].rank;
       $scope.title = data[rank].title;
       $scope.released = data[rank].released;
       $scope.runtime = data[rank].runtime;
       $scope.plot = data[rank].plot;
       $scope.imdbID = data[rank].imdbID;
-      var cur = $scope.rank;
+      var cur = $routeParams.rank;
       var prevp = cur-1;
       var nextp = prevp+2;
-      if(prevp===0){
+      if(prevp<0){
         prevp=249;
       }
       if(nextp>=249){
-        nextp=1;
+        nextp=0;
       }
       $scope.prevp = prevp;
       $scope.nextp = nextp;

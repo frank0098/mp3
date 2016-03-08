@@ -34,7 +34,42 @@ h2
 	font-size: 30px;
 	font-weight: 500;
 }
-
+.searchinput
+{
+	width: 100%;
+}
+.searchbox
+{
+	width:50%;
+	padding:20px;
+	background-color: #A7D8D1;
+	margin:15px auto;
+}
+.listimg
+{
+	height:100px;
+	width:75px;
+}
+.gallerypic
+{
+	height:200px;
+	width:150px;
+}
+.listview
+{
+	margin-left:5px;
+	margin-right: 5px;
+	width: 100%;
+	p
+	{
+		color:#0;
+	}
+}
+.mouseon
+{
+	width: 100%;
+	margin:0px;
+}
 
 .datail-view
 {

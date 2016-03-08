@@ -3,45 +3,40 @@
 <div  ng-controller="MovieListCtrl">
 
 
-
+<div class="searchbox">
   <div class="row">
-  <div class="small-6 columns small-centered">
+  <div class="small-12 columns small-centered">
 
-    Search: <input ng-model="query"><br>
+    Search:<br> <input ng-model="query" class="searchinput" placeholder="Search Your Movie"><br>
     Sort by:
     <select ng-model="orderProp">
       <option value="title">Title</option>
       <option value="imdbRating">Rating</option>
     </select>
-
+    <button class="button success" ng-click="reverse=false">Ascending</button>
+      <button class="button alert" ng-click="reverse=true">Descending</button>
   </div>
 </div>
 
-
+</div>
   <div class="row">
-    <!-- <pre>Sorting predicate = {{orderProp}}; reverse = {{reverse}}</pre> -->
-
-    <div class="small-6 columns small-centered">
-      <button class="button success" ng-click="reverse=false">Ascending</button>
-      <button class="button alert" ng-click="reverse=true">Descending</button>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-8 columns small-centered">
+    <div class="small-8 columns small-centered ">
       <ul class="movies">
-        <li ng-repeat="movie in movies | filter:query | orderBy:orderProp:reverse" class="thumbnail">
+        <li  ng-repeat="movie in movies | filter:query | orderBy:orderProp:reverse" class="thumbnail listview" ng-class="{mouseon:big}" ng-mouseenter="big = true"
+     ng-mouseleave="big = false">
           
-          <a href="#/list/{{movie.rank-1}}" class="thumb">
+          <a href="#/list/{{movie.rank-1}}" class="thumb ">
             <div class="row">
               <div class="small-3 columns">
-                <img src="/data/images/{{movie.imdbID}}.jpg">
+                <img class="listimg" src="/data/images/{{movie.imdbID}}.jpg" >
               </div>
               <div class="small-9 columns">
-                {{movie.title}}
+                <br><h2>{{movie.title}}</h2>
+                <p> Rank: {{movie.rank}}<p>
               </div>
           </div>
           </a>
+          </br>
         </li>
       </ul>
     </div>
