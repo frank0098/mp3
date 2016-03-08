@@ -1,0 +1,69 @@
+
+
+<div  ng-controller="MovieListCtrl">
+
+
+
+  <div class="row">
+  <div class="small-6 columns small-centered">
+
+    Search: <input ng-model="query"><br>
+    Sort by:
+    <select ng-model="orderProp">
+      <option value="title">Title</option>
+      <option value="imdbRating">Rating</option>
+    </select>
+
+  </div>
+</div>
+
+
+  <div class="row">
+    <!-- <pre>Sorting predicate = {{orderProp}}; reverse = {{reverse}}</pre> -->
+
+    <div class="small-6 columns small-centered">
+      <button class="button success" ng-click="reverse=false">Ascending</button>
+      <button class="button alert" ng-click="reverse=true">Descending</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-8 columns small-centered">
+      <ul class="movies">
+        <li ng-repeat="movie in movies | filter:query | orderBy:orderProp:reverse" class="thumbnail">
+          
+          <a href="#/list/{{movie.rank-1}}" class="thumb">
+            <div class="row">
+              <div class="small-3 columns">
+                <img src="/data/images/{{movie.imdbID}}.jpg">
+              </div>
+              <div class="small-9 columns">
+                {{movie.title}}
+              </div>
+          </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div ng-controller="ExampleController">
+  <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+  <hr/>
+  [ <a href="" ng-click="predicate=''">unsorted</a> ]
+  <table class="friend">
+    <tr>
+      <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
+          (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
+      <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
+      <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+    </tr>
+    <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
+      <td>{{friend.name}}</td>
+      <td>{{friend.phone}}</td>
+      <td>{{friend.age}}</td>
+    </tr>
+  </table>
+</div> -->

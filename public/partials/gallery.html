@@ -1,0 +1,29 @@
+<div  ng-controller="MovieListCtrl">
+
+<div class="row">
+  <div class="small-8 columns small-centered">
+    <pre>active_genre {{active_genre}}</pre>
+    <ul class="genres">
+      <li ng-repeat="genre in genres" class="thumbnail">
+        <button ng-click="change_type_func(genre)">{{genre}}</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns small-centered">
+    <ul class="movies">
+      <li ng-repeat="movie in movies|genrefilter:active_genre" class="thumbnail">
+        <a href="#/list/{{movie.rank}}" class="thumb"><img src="/data/images/{{movie.imdbID}}.jpg"></a>
+
+
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+</div>
